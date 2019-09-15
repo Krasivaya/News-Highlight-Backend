@@ -10,3 +10,9 @@ def index():
     title = 'Home - Welcome to best News Website Online'
 
     return render_template('index.html', sources = news_sources, title = title, Categories = NewCategories, Languages = NewLanguages, sort_type = sort_type, headlines = top_headlines)
+@main.route('/source/<id>')
+def source(id):
+    
+    title = 'Home - Welcome to best News Website Online'
+
+    return render_template('source.html', title = title, news = news_articles)
