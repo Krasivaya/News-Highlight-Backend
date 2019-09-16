@@ -24,7 +24,12 @@ This is an Python application that allows a user to view news sources and also b
 * cd News-Highlight
 * open folder in prefered IDE
 * open terminal
-* run the application in your localhost
+* Activate virtual envirnoment `source virtual/bin/acctivate`
+* Install all requirements `pip install -r requirements.txt`
+* Set a new NEWS_API_KEY in start.sh file from the https://news.org
+* Run in terminal `chmod a+x start.sh`
+* Run in terminal `./start.sh`
+* Run the application in your localhost provided
 
 ### Known Bugs
 No bug known. If you found any, please contact!
@@ -33,7 +38,7 @@ No bug known. If you found any, please contact!
 Email: semwagacarine@gmail.com
 
 ### Live site
-[News-Highlight]()
+[News-Highlight](https://krasivaya-news-highlight.herokuapp.com/)
 
 ### License
 This project is under the [MIT](https://github.com/Krasivaya/github/blob/master/LICENSE) license.
