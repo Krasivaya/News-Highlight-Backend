@@ -8,10 +8,85 @@
     <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Libre+Baskerville|Merienda|ZCOOL+XiaoWei" rel="stylesheet">
 {% endblock %}
-<html>
-    <body>
-        <h1>News Highlight
 
-        </h1>
-    </body>
+  <!-- Content block -->
+
+    {% block content %}
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <a href="/"><img src="../static/image1.png"></a>
+          </div>
+          <div class="col-md-6 title">
+            <h1>Global News Highlights</h1>
+            <h5><em>~ Refuse to be left Behind! ~</em></h5>
+          </div>
+          <div class="col-md-3">
+            <form>
+              <label>SortBy:</label>
+              <select name="sortBy_query" class="form-control">
+                <option value=""></option>
+                <option value="Category">Category</option>
+                <option value="Language">Language</option>
+              </select>
+              <br><br>
+              <button type="submit" class="btn btn-default">sort</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="top_headlines">
+            <div class="col-sm-12 col-md-12">
+              <h2>Top Headlines Today</h2>
+            </div>
+            <div class="col-sm-12 col-md-12">
+              <ul>
+                {{macro.displayTopHeadlines(headlines)}}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+          <h2>Available News Sources</h2>
+        </div>
+
+        <div class="row">
+          {% if sort_type == 'Language' %}
+            <div class="language">
+              {% for Language in Languages %}
+                <div class="col-sm-12 col-md-12">
+                  {{macro.displayLanguage(Language)}}
+                </div>
+                <ul class="row">
+                  {{macro.displayNewsSources(Language)}}
+                </ul>
+              {% endfor %}
+            </div>
+
+          {% elif sort_type == 'Category' %}
+            <div class="category">
+              {% for Category in Categories %}
+                <div class="col-sm-12 col-md-12">
+                  {{macro.displayCategory(Category)}}
+                </div>
+                <ul class="row">
+                  {{macro.displayNewsSources(Category)}}
+                </ul>
+              {% endfor %}
+            </div>
+
+          {% else %}
+            <div class="all">
+              <ul class="row">
+                {{macro.displayNewsSources(sources)}}
+              </ul>
+            </div>
+          {% endif %}
+          <h3>Powered by NewsAPI</h3>
+        </div>
+      {% endblock %}
+      </div>
+  </body>
 </html>
